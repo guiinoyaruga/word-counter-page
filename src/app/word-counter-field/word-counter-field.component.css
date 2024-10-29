@@ -1,0 +1,21 @@
+textarea {
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+    padding: 8px;
+    max-width: 100%;
+    line-height: 1.5;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    box-shadow: 1px 1px 1px #999;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+  }
+
+  label {
+    display: block;
+    margin-bottom: 1px;
+    margin-right: 30.5%;
+    text-align: center;
+    font-family: Georgia, 'Times New Roman', Times, serif
+  }
