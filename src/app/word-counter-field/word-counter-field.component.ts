@@ -9,5 +9,5 @@ import { WordCounterButtonComponent } from "../word-counter-button/word-counter-
   styleUrl: './word-counter-field.component.css'
 })
 export class WordCounterFieldComponent {
-
+  
 }
