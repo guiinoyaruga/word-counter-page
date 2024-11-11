@@ -1,5 +1,27 @@
-<label for="text-words">Adicione as palavras:</label>
-<br>
-<textarea id="field-counter" rows="25" cols="100" placeholder="Digite ou cole suas palavras aqui :)" name="quantityWordsOnField" [(ngModel)]="wordsOnField"></textarea>
-<app-quantity-words [receiveQtyWord]="listOfWords"></app-quantity-words>
-<button type="submit" (click)="calculateQtyWords()">Clique para contar!</button>
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Hilbertools</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page" href="#">Início</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Contato</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+<div>
+    <label for="text-words">Adicione o texto no campo abaixo:</label>
+    <br>
+    <textarea id="field-counter" rows="22" cols="100" placeholder="Digite ou cole suas palavras aqui :)"
+        name="quantityWordsOnField" [(ngModel)]="wordsOnField"></textarea>
+    <app-quantity-words [receiveQtyWord]="listOfWords"></app-quantity-words>
+    <button type="submit" class="btn btn-secondary" (click)="calculateQtyWords()">Clique para contar!</button>
+</div>

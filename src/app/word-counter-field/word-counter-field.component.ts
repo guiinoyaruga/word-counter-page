@@ -16,22 +16,16 @@ export class WordCounterFieldComponent {
 
   public ngOnInit(): void {
   }
-  
-  calculateQtyWords(){
-    let arrayCleared = []
-    this.listOfWords = this.wordsOnField.split(' ')
 
-    for(let i = 0; i <this.listOfWords; i++){
-      if(this.listOfWords[i] == " "){
-        this.listOfWords[i].splice(this.listOfWords[i], 1)|
+  calculateQtyWords() {
+    this.listOfWords = this.wordsOnField
 
-        arrayCleared.push(this.listOfWords[i])
-      }
-    }
-    this.listOfWords = arrayCleared
-    this.listOfWords = this.listOfWords.length
+    const arrayWithoutSpaces = this.listOfWords.split(' ').filter(function (element: any = []) {
+      return element
+    })
 
-    this.sendQtyWords.emit(this.listOfWords.length)
-    console.log(arrayCleared.length)
+    this.listOfWords = arrayWithoutSpaces.length
+
+    this.sendQtyWords.emit(this.listOfWords)
   }
 }
