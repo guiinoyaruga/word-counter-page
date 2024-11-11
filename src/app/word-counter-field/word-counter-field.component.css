@@ -25,6 +25,10 @@ textarea {
     font-family: Georgia, 'Times New Roman', Times, serif
   }
 
+  nav{
+    background: blue;
+  }
+
   p {
     text-align: center;
     font-family: Arial, Helvetica, sans-serif

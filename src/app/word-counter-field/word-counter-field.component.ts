@@ -15,6 +15,7 @@ export class WordCounterFieldComponent {
   @Output() sendQtyWords = new EventEmitter<any>();
 
   public ngOnInit(): void {
+    this.calculateQtyWords()
   }
 
   calculateQtyWords() {
