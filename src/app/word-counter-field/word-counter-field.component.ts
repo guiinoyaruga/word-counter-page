@@ -12,21 +12,29 @@ import { QuantityWordsComponent } from "../quantity-words/quantity-words.compone
 export class WordCounterFieldComponent {
   wordsOnField: string = ""
   listOfWords: any = []
+  arrayWithoutSpaces: any = []
   @Output() sendQtyWords = new EventEmitter<any>();
 
   public ngOnInit(): void {
-    this.calculateQtyWords()
+    this.removeNumbersOfArray()
   }
 
-  calculateQtyWords() {
+  calculateQtyWords(): void {
     this.listOfWords = this.wordsOnField
 
-    const arrayWithoutSpaces = this.listOfWords.split(' ').filter(function (element: any = []) {
+    this.arrayWithoutSpaces = this.listOfWords.split(' ').filter(function (element: any = []) {
       return element
     })
 
-    this.listOfWords = arrayWithoutSpaces.length
+    console.log('Qt. palavras: ' + this.listOfWords)
+  }
 
-    this.sendQtyWords.emit(this.listOfWords)
+  removeNumbersOfArray(): void{
+    this.arrayWithoutSpaces = this.arrayWithoutSpaces.filter((x: any = []) => isNaN(x))
+    this.arrayWithoutSpaces = this.arrayWithoutSpaces.length
+
+    console.log('tamanho do array: ' + this.arrayWithoutSpaces)
+
+    this.sendQtyWords.emit(this.arrayWithoutSpaces)
   }
 }

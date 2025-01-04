@@ -10,6 +10,6 @@
     <br>
     <textarea id="field-counter" rows="22" cols="100" placeholder="Digite ou cole suas palavras aqui :)"
         name="quantityWordsOnField" [(ngModel)]="wordsOnField"></textarea>
-    <app-quantity-words [receiveQtyWord]="listOfWords"></app-quantity-words>
-    <button type="submit" class="btn btn-secondary" (click)="calculateQtyWords()">Clique para contar!</button>
+    <app-quantity-words [receiveQtyWord]="arrayWithoutSpaces"></app-quantity-words>
+    <button type="submit" class="btn btn-secondary" (click)="calculateQtyWords(); removeNumbersOfArray();">Clique para contar!</button>
 </div>
