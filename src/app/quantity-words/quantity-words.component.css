@@ -1,3 +1,21 @@
 p{
     text-align: center;
+    font-size: 13px;
+    margin-bottom: 0.5px;
 }
+
+#animTransitionQty {
+    transform: translateX(-100%);
+    animation: slideIn 1.5s forwards;
+  }
+  
+  @keyframes slideIn {
+    0% {
+      transform: translateX(-100%);
+      opacity: 0;
+    }
+    100% {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }

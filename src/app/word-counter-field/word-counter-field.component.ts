@@ -5,7 +5,7 @@ import { QuantityWordsComponent } from "../quantity-words/quantity-words.compone
 @Component({
   selector: 'app-word-counter-field',
   standalone: true,
-  imports: [WordCounterFieldComponent, FormsModule, QuantityWordsComponent],
+  imports: [QuantityWordsComponent, FormsModule, WordCounterFieldComponent],
   templateUrl: './word-counter-field.component.html',
   styleUrl: './word-counter-field.component.css'
 })
@@ -13,6 +13,10 @@ export class WordCounterFieldComponent {
   wordsOnField: string = ""
   listOfWords: any = []
   arrayWithoutSpaces: any = []
+  arrayWithoutNumbers: any = []
+  arrayWithoutWords: any = []
+  arrayWithOnlyLetters: any = []
+  allArray: any = {}
   @Output() sendQtyWords = new EventEmitter<any>();
 
   public ngOnInit(): void {
@@ -26,15 +30,24 @@ export class WordCounterFieldComponent {
       return element
     })
 
-    console.log('Qt. palavras: ' + this.listOfWords)
+    return this.arrayWithoutSpaces
   }
-
   removeNumbersOfArray(): void{
-    this.arrayWithoutSpaces = this.arrayWithoutSpaces.filter((x: any = []) => isNaN(x))
-    this.arrayWithoutSpaces = this.arrayWithoutSpaces.length
+    this.arrayWithoutNumbers = this.arrayWithoutSpaces.filter((x: any = []) => isNaN(x))
+    this.arrayWithoutNumbers = this.arrayWithoutNumbers.length
 
-    console.log('tamanho do array: ' + this.arrayWithoutSpaces)
+    this.arrayWithoutWords = this.arrayWithoutSpaces.filter((x: any = []) => Number(x))
+    this.arrayWithoutWords = this.arrayWithoutWords.length
 
-    this.sendQtyWords.emit(this.arrayWithoutSpaces)
+    this.arrayWithOnlyLetters = this.arrayWithoutSpaces.toString()
+    this.arrayWithOnlyLetters = this.arrayWithOnlyLetters.split('')
+    this.arrayWithOnlyLetters = this.arrayWithOnlyLetters.filter((x: any = []) => isNaN(x))
+
+    this.allArray = {
+      qtyArrayNoNumber: this.arrayWithoutNumbers,
+      qtyArrayNoWords: this.arrayWithoutWords,
+      qtyArrayOnlyLetters: this.arrayWithOnlyLetters
+    }
+    this.sendQtyWords.emit(this.allArray)
   }
 }
