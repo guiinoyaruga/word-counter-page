@@ -3,11 +3,13 @@ import { WordCounterFieldComponent } from './word-counter-field.component';
 import { QuantityWordsComponent } from '../quantity-words/quantity-words.component';
 
 describe('WordCounterFieldComponent', () => {
+
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ WordCounterFieldComponent, QuantityWordsComponent
+      imports: [WordCounterFieldComponent, QuantityWordsComponent
       ],
     }).compileComponents();
+
   });
 
   it('should create the app', () => {
@@ -36,6 +38,6 @@ describe('WordCounterFieldComponent', () => {
     const compile = fixture.nativeElement as HTMLElement
     fixture.detectChanges()
     expect(compile.querySelector('button')).toBeTruthy()
-    expect(compile.querySelector('button')?.textContent).toContain('Clique para contar!') 
+    expect(compile.querySelector('button')?.textContent).toContain('Clique para contar!')
   });
 });
