@@ -1,15 +1,17 @@
 <nav class="navbar bg-body-tertiary" data-bs-theme="dark">
-    <div class="container-fluid">
-      <span class="navbar-text">
-        <strong>Contador de palavras</strong>
-      </span>
-    </div>
-  </nav>
+  <div class="container-fluid">
+    <span class="navbar-text">
+      <strong>Contador de palavras</strong>
+    </span>
+  </div>
+</nav>
 <div>
-    <label for="text-words" id="animTransitionTitle">Adicione o texto no campo abaixo:</label>
-    <br>
-    <textarea id="field-counter" id="animTransitionTextArea" rows="22" cols="100" placeholder="Digite ou cole suas palavras aqui :)"
-        name="quantityWordsOnField" [(ngModel)]="wordsOnField"></textarea>
-    <app-quantity-words [receiveQtyWord]="allArray"></app-quantity-words>
-    <button type="submit" class="btn btn-secondary" id="animTransitionButton" (click)="calculateQtyWords(); removeNumbersOfArray();">Clique para contar!</button>
+  <label for="text-words" id="animTransitionTitle">Adicione o texto no campo abaixo:</label>
+  <br>
+  <textarea id="field-counter" id="animTransitionTextArea" rows="22" cols="100"
+    placeholder="Digite ou cole suas palavras aqui :)" name="quantityWordsOnField"
+    [(ngModel)]="wordsOnField"></textarea>
+  <app-quantity-words [receiveQtyWord]="allArray"></app-quantity-words>
+  <button type="submit" class="btn btn-secondary" id="animTransitionButton"
+    (click)="calculateQtyWords(); removeNumbersOfArray();">Clique para contar!</button>
 </div>

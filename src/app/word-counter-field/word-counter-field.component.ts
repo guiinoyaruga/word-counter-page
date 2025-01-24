@@ -32,7 +32,7 @@ export class WordCounterFieldComponent {
 
     return this.arrayWithoutSpaces
   }
-  removeNumbersOfArray(): void{
+  removeNumbersOfArray(): void {
     this.arrayWithoutNumbers = this.arrayWithoutSpaces.filter((x: any = []) => isNaN(x))
     this.arrayWithoutNumbers = this.arrayWithoutNumbers.length
 
