@@ -16,10 +16,26 @@ describe('WordCounterFieldComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it('validate function', () => {
-    const fixture2 = TestBed.createComponent(WordCounterFieldComponent);
-    const app = fixture2.componentInstance;
-    expect(app.calculateQtyWords()).toHaveSize(0);
+  it('should contain text area and placeholder text area', () => {
+    const fixture = TestBed.createComponent(WordCounterFieldComponent)
+    const compile = fixture.nativeElement as HTMLElement
+    fixture.detectChanges()
+    expect(compile.querySelector('textarea')).toBeTruthy()
+    expect(compile.querySelector('textarea')?.placeholder).toContain('Digite ou cole suas palavras aqui :)')
   })
 
+  it('should have a title on navbar', () => {
+    const fixture = TestBed.createComponent(WordCounterFieldComponent)
+    const compile = fixture.nativeElement as HTMLElement
+    fixture.detectChanges()
+    expect(compile.querySelector('span')?.textContent).toContain("Contador de palavra")
+  })
+
+  it('should have a button to calculate words of text area', () => {
+    const fixture = TestBed.createComponent(WordCounterFieldComponent)
+    const compile = fixture.nativeElement as HTMLElement
+    fixture.detectChanges()
+    expect(compile.querySelector('button')).toBeTruthy()
+    expect(compile.querySelector('button')?.textContent).toContain('Clique para contar!') 
+  });
 });
