@@ -7,13 +7,13 @@
 </nav>
 <div>
   <label for="text-words" id="animTransitionTitle">Adicione o texto no campo abaixo:</label>
-  <div class="alert alert-danger" role="alert" id="alerting">
-    Sem dados, digite no campo!
-   </div>
+  <div class="alert alert-danger d-none mt-2" role="alert" id="alerting" #alerting>
+    Ops, digite no campo abaixo!
+  </div>
   <textarea id="field-counter" id="animTransitionTextArea" rows="22" cols="100"
     placeholder="Digite ou cole suas palavras aqui :)" name="quantityWordsOnField"
     [(ngModel)]="wordsOnField"></textarea>
   <app-quantity-words [receiveQtyWord]="allArray"></app-quantity-words>
-  <button type="submit" class="btn btn-secondary" id="animTransitionButton"
-    (click)="separateTypeQty();">Clique para contar! </button>
+  <button type="submit" class="btn btn-secondary" id="animTransitionButton" (click)="separateTypeQty();">Clique para
+    contar! </button>
 </div>

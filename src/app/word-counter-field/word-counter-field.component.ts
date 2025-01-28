@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, EventEmitter, Output, ViewChild } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { QuantityWordsComponent } from "../quantity-words/quantity-words.component";
 
@@ -17,11 +17,8 @@ export class WordCounterFieldComponent {
   arrayWithoutWords: any = []
   arrayWithOnlyLetters: any = []
   allArray: any = {}
+  @ViewChild('alerting', { static: true }) alerting!: ElementRef;
   @Output() sendQtyWords = new EventEmitter<any>();
-
-  public ngOnInit(): void {
-    // this.separateTypeQty()
-  }
 
   calculateQtyWords(): void {
     this.listOfWords = this.wordsOnField
@@ -60,6 +57,11 @@ export class WordCounterFieldComponent {
     }
 
     if (this.allArray.qtyArrayNoNumber == 0 && this.allArray.qtyArrayNoWords == 0) {
+      this.alerting.nativeElement.classList.remove('d-none');
+
+      setTimeout(() => {
+        this.alerting.nativeElement.classList.add('d-none');
+      }, 4500);
     } else {
       return this.sendQtyWords.emit(this.allArray)
     }
