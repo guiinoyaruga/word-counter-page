@@ -20,7 +20,7 @@ export class WordCounterFieldComponent {
   @Output() sendQtyWords = new EventEmitter<any>();
 
   public ngOnInit(): void {
-    this.removeNumbersOfArray()
+    // this.separateTypeQty()
   }
 
   calculateQtyWords(): void {
@@ -30,24 +30,38 @@ export class WordCounterFieldComponent {
       return element
     })
 
-    return this.arrayWithoutSpaces
-  }
-  removeNumbersOfArray(): void {
     this.arrayWithoutNumbers = this.arrayWithoutSpaces.filter((x: any = []) => isNaN(x))
     this.arrayWithoutNumbers = this.arrayWithoutNumbers.length
 
+    return this.arrayWithoutNumbers
+  }
+
+  calculateQtyNumbers(): void {
     this.arrayWithoutWords = this.arrayWithoutSpaces.filter((x: any = []) => Number(x))
     this.arrayWithoutWords = this.arrayWithoutWords.length
 
-    this.arrayWithOnlyLetters = this.arrayWithoutSpaces.toString()
-    this.arrayWithOnlyLetters = this.arrayWithOnlyLetters.split('')
-    this.arrayWithOnlyLetters = this.arrayWithOnlyLetters.filter((x: any = []) => isNaN(x))
+    return this.arrayWithoutWords
+  }
 
+  calculateQtyLetters(): void {
+    // this.arrayWithOnlyLetters = this.arrayWithoutSpaces.toString()
+    // this.arrayWithOnlyLetters = this.arrayWithOnlyLetters.split('')
+    // this.arrayWithOnlyLetters = this.arrayWithOnlyLetters.filter((x: any = []) => isNaN(x))
+    // this.arrayWithOnlyLetters = this.arrayWithOnlyLetters.length
+
+    // return this.arrayWithOnlyLetters
+  }
+
+  separateTypeQty() {
     this.allArray = {
-      qtyArrayNoNumber: this.arrayWithoutNumbers,
-      qtyArrayNoWords: this.arrayWithoutWords,
-      qtyArrayOnlyLetters: this.arrayWithOnlyLetters
+      qtyArrayNoNumber: this.calculateQtyWords(),
+      qtyArrayNoWords: this.calculateQtyNumbers(),
+      qtyArrayOnlyLetters: this.calculateQtyLetters()
     }
-    this.sendQtyWords.emit(this.allArray)
+
+    if (this.allArray.qtyArrayNoNumber == 0 && this.allArray.qtyArrayNoWords == 0) {
+    } else {
+      return this.sendQtyWords.emit(this.allArray)
+    }
   }
 }

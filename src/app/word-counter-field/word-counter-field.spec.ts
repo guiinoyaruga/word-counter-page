@@ -1,6 +1,16 @@
 import { TestBed } from '@angular/core/testing';
 import { WordCounterFieldComponent } from './word-counter-field.component';
 import { QuantityWordsComponent } from '../quantity-words/quantity-words.component';
+import { of } from 'rxjs';
+
+class Mock extends WordCounterFieldComponent {
+  response: any = 'teste'
+
+  override calculateQtyWords() {
+    return of(this.response)
+  }
+}
+
 
 describe('WordCounterFieldComponent', () => {
 
@@ -8,8 +18,11 @@ describe('WordCounterFieldComponent', () => {
     await TestBed.configureTestingModule({
       imports: [WordCounterFieldComponent, QuantityWordsComponent
       ],
+      providers: [{
+        provide: WordCounterFieldComponent,
+        useClass: Mock
+      }],
     }).compileComponents();
-
   });
 
   it('should create the app', () => {
@@ -40,4 +53,8 @@ describe('WordCounterFieldComponent', () => {
     expect(compile.querySelector('button')).toBeTruthy()
     expect(compile.querySelector('button')?.textContent).toContain('Clique para contar!')
   });
+
+  it('should show a error message', () => {
+  });
+
 });
