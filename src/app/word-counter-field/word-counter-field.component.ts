@@ -17,6 +17,7 @@ export class WordCounterFieldComponent {
   arrayWithoutWords: any = []
   arrayWithOnlyLetters: any = []
   allArray: any = {}
+  defaultValue: any
   @ViewChild('alerting', { static: true }) alerting!: ElementRef;
   @Output() sendQtyWords = new EventEmitter<any>();
 
@@ -26,6 +27,8 @@ export class WordCounterFieldComponent {
     this.arrayWithoutSpaces = this.listOfWords.split(' ').filter(function (element: any = []) {
       return element
     })
+
+    console.log(this.arrayWithoutSpaces)
 
     this.arrayWithoutNumbers = this.arrayWithoutSpaces.filter((x: any = []) => isNaN(x))
     this.arrayWithoutNumbers = this.arrayWithoutNumbers.length
@@ -65,5 +68,9 @@ export class WordCounterFieldComponent {
     } else {
       return this.sendQtyWords.emit(this.allArray)
     }
+  }
+
+  clearTextArea(element: any){
+    this.defaultValue = ""
   }
 }

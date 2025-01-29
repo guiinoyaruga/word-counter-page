@@ -10,10 +10,11 @@
   <div class="alert alert-danger d-none mt-2" role="alert" id="alerting" #alerting>
     Ops, digite no campo abaixo!
   </div>
-  <textarea id="field-counter" id="animTransitionTextArea" rows="22" cols="100"
+  <textarea id="field-counter" id="animTransitionTextArea"  [(ngModel)]="defaultValue" rows="22" cols="100"
     placeholder="Digite ou cole suas palavras aqui :)" name="quantityWordsOnField"
     [(ngModel)]="wordsOnField"></textarea>
   <app-quantity-words [receiveQtyWord]="allArray"></app-quantity-words>
   <button type="submit" class="btn btn-secondary" id="animTransitionButton" (click)="separateTypeQty();">Clique para
     contar! </button>
+  <button type="submit" class="btn btn-link" id="animTransitionButton" (click)="clearTextArea(this)">Limpar </button>
 </div>
