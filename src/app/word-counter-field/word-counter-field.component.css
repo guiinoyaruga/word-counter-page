@@ -94,7 +94,7 @@ p {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-button {
+.counter-button {
   border: none;
   padding: 15px 32px;
   border-radius: 5px;
@@ -106,9 +106,29 @@ button {
   display: block;
 }
 
-button:hover {
+.counter-button:hover {
   transition: 0.5s;
+  color: black;
   background-color: rgb(5, 153, 42);
+}
+
+.clear-button {
+  border: none;
+  padding: 15px 32px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-size: 16px;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 10px;
+  display: block;
+}
+
+.clear-button:hover {
+  transition: 0.5s;
+  color: white;
+  background-color: rgb(237, 40, 40);
 }
 
 span {
