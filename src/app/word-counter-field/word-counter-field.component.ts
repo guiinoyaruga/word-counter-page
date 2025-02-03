@@ -6,7 +6,7 @@ import { MyServiceService } from '../my-service.service';
 @Component({
   selector: 'app-word-counter-field',
   standalone: true,
-  imports: [QuantityWordsComponent, FormsModule, WordCounterFieldComponent],
+  imports: [QuantityWordsComponent, FormsModule],
   templateUrl: './word-counter-field.component.html',
   styleUrl: './word-counter-field.component.css'
 })
@@ -24,7 +24,7 @@ export class WordCounterFieldComponent {
   @ViewChild('alerting', { static: true }) alerting!: ElementRef;
   @Output() sendQtyWords = new EventEmitter<any>();
 
-  constructor(private http: MyServiceService){}
+  constructor(private http: MyServiceService) { }
 
   calculateQtyWords(): void {
     this.listOfWords = this.wordsOnField
@@ -75,20 +75,21 @@ export class WordCounterFieldComponent {
     }
   }
 
-  clearTextArea(element: any){
-    this.defaultValue = ""
+  clearTextArea(element: any) {
+    this.wordsOnField = ""
+    this.allArray = 0
   }
 
-  getData(){
-   this.http.buscarListagemUsuarios().subscribe(res => {
-    this.data = res
-   })
+  getData() {
+    this.http.buscarListagemUsuarios().subscribe(res => {
+      this.data = res
+    })
   }
 
-  fakeFunctionAsyncTest(){
-     this.fakeVar = 'João'
+  fakeFunctionAsyncTest() {
+    this.fakeVar = 'João'
 
-    setTimeout(()=>{
+    setTimeout(() => {
       this.fakeVar = 'Guizera'
     }, 100)
   }
