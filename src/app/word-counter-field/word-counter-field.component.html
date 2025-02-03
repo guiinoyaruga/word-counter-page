@@ -14,9 +14,7 @@
     placeholder="Digite ou cole suas palavras aqui :)" name="quantityWordsOnField"
     [(ngModel)]="wordsOnField"></textarea>
   <app-quantity-words [receiveQtyWord]="allArray"></app-quantity-words>
-  <button type="submit" class="btn btn-secondary" id="animTransitionButton" (click)="separateTypeQty();">Clique para
+  <button type="submit" class="btn btn-secondary counter-button" id="animTransitionButton" (click)="separateTypeQty();">Clique para
     contar! </button>
-  <button type="submit" class="btn btn-link" id="animTransitionButton" (click)="clearTextArea(this)">Limpar </button>
-
-  <button class="teste"></button>
+  <button type="submit" class="btn btn-link clear-button" id="animTransitionButton" (click)="clearTextArea(this)">Limpar</button>
 </div>
