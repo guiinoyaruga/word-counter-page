@@ -1,6 +1,7 @@
 import { AfterViewInit, Component, ElementRef, EventEmitter, Output, ViewChild } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { QuantityWordsComponent } from "../quantity-words/quantity-words.component";
+import { MyServiceService } from '../my-service.service';
 
 @Component({
   selector: 'app-word-counter-field',
@@ -18,8 +19,12 @@ export class WordCounterFieldComponent {
   arrayWithOnlyLetters: any = []
   allArray: any = {}
   defaultValue: any
+  data: any
+  fakeVar: any
   @ViewChild('alerting', { static: true }) alerting!: ElementRef;
   @Output() sendQtyWords = new EventEmitter<any>();
+
+  constructor(private http: MyServiceService){}
 
   calculateQtyWords(): void {
     this.listOfWords = this.wordsOnField
@@ -72,5 +77,19 @@ export class WordCounterFieldComponent {
 
   clearTextArea(element: any){
     this.defaultValue = ""
+  }
+
+  getData(){
+   this.http.buscarListagemUsuarios().subscribe(res => {
+    this.data = res
+   })
+  }
+
+  fakeFunctionAsyncTest(){
+     this.fakeVar = 'João'
+
+    setTimeout(()=>{
+      this.fakeVar = 'Guizera'
+    }, 100)
   }
 }

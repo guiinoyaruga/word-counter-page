@@ -30,9 +30,10 @@ describe('MyServiceService', () => {
     });
     service = TestBed.inject(MyServiceService);
     httpTestingController = TestBed.inject(HttpTestingController);
+
   });
 
-  fit('should get data', () => {
+  it('should get data', () => {
     const id = 1
     const response = [{
       id: 1,
@@ -45,7 +46,7 @@ describe('MyServiceService', () => {
     })
   });
 
-  fit('should get a user ID', () => {
+  it('should get a user ID', () => {
     let id = 2;
     let userId = [{
       id: 2,
@@ -64,7 +65,7 @@ describe('MyServiceService', () => {
     expect(request.request.url).toBe(`${service.url}/users/${id}`)
   });
 
-  fit('should get a user list', () => {
+  it('should get a user list', () => {
     const usersList = [{
       id: 1,
       nome: 'Dablio',
@@ -86,7 +87,7 @@ describe('MyServiceService', () => {
     expect(request.request.url).toBe(`${service.url}/users`)
   });
 
-  fit('should return a http error 500', () => {
+  it('should return a http error 500', () => {
     service.buscarListagemUsuarios().subscribe({
       error: (erro) => {
         expect(erro.status).toEqual(500)
@@ -105,7 +106,7 @@ describe('MyServiceService', () => {
 
   });
 
-  fit('should can make a POST', () => {
+  it('should can make a POST', () => {
     const user = [{id: 1, nome: 'gui', idade: 20}]
     const response = [{id: 1, nome: 'gui', idade: 20}]
 
@@ -120,7 +121,7 @@ describe('MyServiceService', () => {
     request.flush(response)
   });
   
-  fit('should can make a PUT', () => {
+  it('should can make a PUT', () => {
     const id = 1
     const user = [{ nome: 'gui', idade: 20}]
     const response = [{ nome: 'gui', idade: 20}]
@@ -134,6 +135,20 @@ describe('MyServiceService', () => {
     expect(request.request.method).toBe('PUT')
     expect(request.request.url).toBe(`${service.url}/users/${id}`)
     request.flush(response)
-    
-  });
-});
+  }); 
+
+  it('should can make a DELETE', () => {
+    const id = 1
+    const response = {}
+
+    service.deletarUsuario(id).subscribe(req => {
+      expect(req).toBe(response)
+    })
+
+    const request = httpTestingController.expectOne((req) => req.url === `${service.url}/users/${id}`);
+
+    expect(request.request.method).toBe('DELETE')
+    expect(request.request.url).toBe(`${service.url}/users/${id}`)
+    request.flush(response)
+  }); 
+})

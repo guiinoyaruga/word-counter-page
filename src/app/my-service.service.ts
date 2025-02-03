@@ -25,7 +25,7 @@ export class MyServiceService {
     return this.http.put(`${this.url}/users/${id}`, user)
   }
 
-  excluirUsuario(user: {}){
-    return this.http.delete(`${this.url}/users`, user)
+  deletarUsuario(id: number){
+    return this.http.delete(`${this.url}/users/${id}`)
   }
 }
