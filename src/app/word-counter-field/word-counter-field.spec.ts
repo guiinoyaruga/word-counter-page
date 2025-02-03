@@ -80,6 +80,18 @@ describe('WordCounterFieldComponent', () => {
   }
   )
 
+  it('should clear textarea after button of "clear" be clicked', () => {
+    const component = fixture.componentInstance;
+    let textAreaExample = 'texto de teste'
+    let spiedComponent = spyOn(component, 'clearTextArea').and.callThrough()
+
+    component.clearTextArea(textAreaExample)
+
+    expect(spiedComponent).toHaveBeenCalledTimes(1)
+    expect(component.wordsOnField).toEqual('')
+  }
+  )
+
   it('should call function calculateQtyWords', () => {
     const component = fixture.componentInstance;
     let spiedComponent = spyOn(component, 'calculateQtyWords').and.callThrough()
