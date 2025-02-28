@@ -1,54 +1,51 @@
-# This config was automatically generated from your source code
-# Stacks detected: deps:node:.
 version: 2.1
-orbs:
-  node: circleci/node@5
-jobs:
-  test-node:
-    # Install node dependencies and run tests
-    executor: node/default
-    steps:
-      - checkout
-      - node/install-packages:
-          pkg-manager: npm
-      - run:
-          name: Run tests
-          command: npm test --passWithNoTests
-  build-node:
-    # Build node project
-    executor: node/default
-    steps:
-      - checkout
-      - node/install-packages:
-          pkg-manager: npm
-      - run:
-          command: npm run build
-      - run:
-          name: Create the ~/artifacts directory if it doesn't exist
-          command: mkdir -p ~/artifacts
-      # Copy output to artifacts dir
-      - run:
-          name: Copy artifacts
-          command: cp -R build dist public .output .next .docusaurus ~/artifacts 2>/dev/null || true
-      - store_artifacts:
-          path: ~/artifacts
-          destination: node-build
-  deploy:
-    # This is an example deploy job, not actually used by the workflow
+
+executors:
+  cypress-executor:
     docker:
-      - image: cimg/base:stable
+      - image: cypress/included:14.0.3  # Escolha a versão do Cypress desejada
+    working_directory: ~/repo
+
+jobs:
+  install-dependencies:
+    executor: cypress-executor
     steps:
-      # Replace this with steps to deploy to users
+      - checkout
+      - restore_cache:
+          keys:
+            - node-cache-{{ checksum "package-lock.json" }}
       - run:
-          name: deploy
-          command: '#e.g. ./deploy.sh'
+          name: Install dependencies
+          command: npm ci
+      - save_cache:
+          key: node-cache-{{ checksum "package-lock.json" }}
+          paths:
+            - node_modules
+
+  run-tests:
+    executor: cypress-executor
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - node-cache-{{ checksum "package-lock.json" }}
+      - run:
+          name: Run Cypress Tests
+          command: npm run cy:run  # Ou o comando adequado para rodar os testes
+      - store_artifacts:
+          path: cypress/screenshots
+          destination: screenshots
+      - store_artifacts:
+          path: cypress/videos
+          destination: videos
+      - store_test_results:
+          path: cypress/results  # Se você estiver gerando resultados em JUnit
+
 workflows:
-  build-and-test:
+  version: 2
+  cypress-tests:
     jobs:
-      - test-node
-      - build-node:
+      - install-dependencies
+      - run-tests:
           requires:
-            - test-node
-    # - deploy:
-    #     requires:
-    #       - build-node
+            - install-dependencies

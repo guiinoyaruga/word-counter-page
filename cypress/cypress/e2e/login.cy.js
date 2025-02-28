@@ -1,6 +1,6 @@
 describe("Name of the group", () => {
   beforeEach(() => {
-    cy.visit("http://localhost:3000");
+    cy.visit("http://www.google.com.br");
   });
 
   it("should behave...", () => {
