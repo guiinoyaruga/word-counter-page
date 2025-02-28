@@ -23,7 +23,7 @@ jobs:
             - node_modules
       - run:
           name: Run Cypress Tests
-          command: npx cypress run --config-file word-counter-page/cypress/cypress.config.js # Ou o comando adequado para rodar os testes
+          command: npx cypress run --config-file cypress/cypress.config.js # Ou o comando adequado para rodar os testes
       - store_artifacts:
           path: cypress/screenshots
           destination: screenshots
