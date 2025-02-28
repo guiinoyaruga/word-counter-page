@@ -3,13 +3,8 @@ version: 2.1
 executors:
   cypress-executor:
     docker:
-<<<<<<< HEAD
       - image: cypress/included:14.0.3  # Escolha a versão do Cypress desejada
     working_directory: ~/word-counter-page/cypress
-=======
-      - image: cypress/included:14.0.3
-    working_directory: ~/project/cypress
->>>>>>> origin/circleci-project-setup
 
 jobs:
   cypress-run:
@@ -28,7 +23,7 @@ jobs:
             - node_modules
       - run:
           name: Run Cypress Tests
-          command: npx cypress run
+          command: npx cypress run  # Ou o comando adequado para rodar os testes
       - store_artifacts:
           path: cypress/screenshots
           destination: screenshots
@@ -36,7 +31,7 @@ jobs:
           path: cypress/videos
           destination: videos
       - store_test_results:
-          path: cypress/results
+          path: cypress/results  # Se você estiver gerando resultados em JUnit
 
 workflows:
   version: 2
