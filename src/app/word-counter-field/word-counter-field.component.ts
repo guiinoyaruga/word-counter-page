@@ -75,7 +75,7 @@ export class WordCounterFieldComponent {
     }
   }
 
-  clearTextArea(element: any) {
+  clearTextArea() {
     this.wordsOnField = ""
     this.allArray = 0
   }
