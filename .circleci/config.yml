@@ -4,7 +4,7 @@ executors:
   cypress-executor:
     docker:
       - image: cypress/included:14.0.3  # Escolha a versão do Cypress desejada
-    working_directory: ~/word-counter-page/cypress
+    working_directory: word-counter-page/cypress
 
 jobs:
   cypress-run:
