@@ -31,7 +31,7 @@ jobs:
             - node-cache-{{ checksum "package-lock.json" }}
       - run:
           name: Run Cypress Tests
-          command: npm run cy:run  # Ou o comando adequado para rodar os testes
+          command: npx cypress run  # Ou o comando adequado para rodar os testes
       - store_artifacts:
           path: cypress/screenshots
           destination: screenshots
