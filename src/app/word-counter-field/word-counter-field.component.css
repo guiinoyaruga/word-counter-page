@@ -74,10 +74,11 @@ textarea {
   margin-left: auto;
   margin-right: auto;
   display: block;
+  margin-top: 10px;
 }
 
 label {
-  display: grid;
+  display: block;
   margin-bottom: 1px;
   padding-top: 5px;
   margin-right: 35%;
@@ -96,7 +97,7 @@ p {
 
 .counter-button {
   border: none;
-  padding: 15px 32px;
+  padding: 11px;
   border-radius: 5px;
   text-decoration: none;
   font-size: 16px;
@@ -114,7 +115,7 @@ p {
 
 .clear-button {
   border: none;
-  padding: 15px 32px;
+  padding: 11px;
   border-radius: 5px;
   text-decoration: none;
   font-size: 16px;
