@@ -3,10 +3,11 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve --host 0.0.0.0 --disable-host-check",
-    "build": "ng build",
-    "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "start": "nx serve --host 0.0.0.0 --disable-host-check",
+    "build": "nx build",
+    "lint": "eslint ./src",
+    "watch": "nx build --watch --configuration development",
+    "test": "node ./run-tests.js"
   },
   "private": true,
   "dependencies": {
@@ -18,6 +19,7 @@
     "@angular/platform-browser": "^18.2.0",
     "@angular/platform-browser-dynamic": "^18.2.0",
     "@angular/router": "^18.2.0",
+    "@nx/angular": "22.2.7",
     "bootstrap": "^5.3.3",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
@@ -26,8 +28,13 @@
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^18.2.10",
+    "@angular-devkit/core": "^18.2.10",
+    "@angular-devkit/schematics": "^18.2.10",
     "@angular/cli": "^18.2.10",
     "@angular/compiler-cli": "^18.2.0",
+    "@nx/angular": "22.2.7",
+    "@nx/workspace": "22.2.7",
+    "@schematics/angular": "^18.2.10",
     "@types/jasmine": "~5.1.0",
     "@types/jquery": "^3.5.32",
     "cypress": "^14.1.0",
@@ -37,6 +44,7 @@
     "karma-coverage": "~2.2.0",
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.1.0",
+    "nx": "22.2.7",
     "typescript": "~5.5.2"
   }
 }
